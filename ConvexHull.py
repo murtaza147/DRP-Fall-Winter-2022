@@ -1,7 +1,4 @@
-coordinates = [(2, 2), (7, 7), (4, 1), (5, 4), (3, 5), (6, 3)]
-
-
-# [(2, 2), (7, 7), (4, 1), (5, 4), (3, 5), (6, 3)]
+coordinates = [(2, 4), (4, 6), (6, 4), (4, 2), (3, 0), (8, 3), (5, 8), (5, 5)]
 
 
 def rightTurn(l):
@@ -13,8 +10,9 @@ def rightTurn(l):
     # c3| l[2][0]   l[2][1]   1 | l[2][0]   l[2][1]   1 |
 
     # -ve value meaning right turn
-    print((l[0][0] * l[1][1] + l[1][0] * l[2][1]) - (l[0][1] * l[1][0] + l[1][1] * l[2][0]))
-    return (l[0][0] * l[1][1] * 1) < 0
+    print("-ve?")
+    print(((l[0][0] * l[1][1] * 1) + (l[0][1] * 1 * l[2][0]) + (1 * l[1][0] * l[2][1])) - ((l[2][0] * l[1][1] * 1) + (l[2][1] * 1 * l[0][0]) + (1 * l[1][0]) * l[0][1]) > 0)
+    return (((l[0][0] * l[1][1] * 1) + (l[0][1] * 1 * l[2][0]) + (1 * l[1][0] * l[2][1])) - ((l[2][0] * l[1][1] * 1) + (l[2][1] * 1 * l[0][0]) + (1 * l[1][0]) * l[0][1])) > 0
 
 
 def convexHull(p):
@@ -39,11 +37,11 @@ def convexHull(p):
     print('-' * 25)
     print()
 
-    lower = [p[-1], p[-2]]
-    print(p)
+    lower = [upper[-1], upper[-2]]
+    print(upper)
     print(lower)
     i = len(coordinates) - 3
-    while i > 1:
+    while i >= 1:
         lower.append(p[i])
         print("cor being appended: " + str(p[i]))
         print(lower)
@@ -52,8 +50,11 @@ def convexHull(p):
             lower.remove(lower[-2])
             print(lower)
         i -= 1
-    #lower.remove(lower[-2])
-    lower.remove(lower[0])
+    if len(lower) > 2:
+        lower.remove(lower[-1])
+        lower.remove(lower[0])
+    else:
+        lower.remove(lower[0])
     print(lower)
     return upper + lower
 
