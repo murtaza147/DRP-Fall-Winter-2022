@@ -1,16 +1,20 @@
 coordinates = [(2, 2), (7, 7), (4, 1), (5, 4), (3, 5), (6, 3)]
 
 
+# [(2, 2), (7, 7), (4, 1), (5, 4), (3, 5), (6, 3)]
+
+
 def rightTurn(l):
     # Calculating the determinant
-    #          x          y
-    # c1| l[0][0]    l[0][1] |
-    # c2| l[1][0]    l[1][1] |
-    # c3| l[2][0]    l[2][1] |
+    # Here's how im doing it: https://www.youtube.com/watch?v=bkJX3q7wvJc&ab_channel=Mario%27sMathTutoring
+    #          x         y
+    # c1| l[0][0]   l[0][1]   1 | l[0][0]   l[0][1]   1 |
+    # c2| l[1][0]   l[1][1]   1 | l[1][0]   l[1][1]   1 |
+    # c3| l[2][0]   l[2][1]   1 | l[2][0]   l[2][1]   1 |
 
     # -ve value meaning right turn
     print((l[0][0] * l[1][1] + l[1][0] * l[2][1]) - (l[0][1] * l[1][0] + l[1][1] * l[2][0]))
-    return ((l[0][0] * l[1][1] + l[1][0] * l[2][1]) - (l[0][1] * l[1][0] + l[1][1] * l[2][0])) > 0
+    return (l[0][0] * l[1][1] * 1) < 0
 
 
 def convexHull(p):
@@ -31,11 +35,9 @@ def convexHull(p):
         i += 1
     print(upper)
 
-
     print()
-    print('-'*25)
+    print('-' * 25)
     print()
-
 
     lower = [p[-1], p[-2]]
     print(p)
@@ -50,7 +52,7 @@ def convexHull(p):
             lower.remove(lower[-2])
             print(lower)
         i -= 1
-    lower.remove(lower[-2])
+    #lower.remove(lower[-2])
     lower.remove(lower[0])
     print(lower)
     return upper + lower
