@@ -1,3 +1,7 @@
+
+import matplotlib.pyplot as plt
+import numpy as np
+
 coordinates = [(30, 60), (50, 40), (70, 30), (0, 30), (15, 25), (55, 20), (50, 10), (20, 0)]
 
 
@@ -70,9 +74,6 @@ hull_xs = [p[0] for p in hull]
 hull_ys = [p[1] for p in hull]
 hull_xs.append(hull_xs[0])
 hull_ys.append(hull_ys[0])
-
-import matplotlib.pyplot as plt
-import numpy as np
 
 fig, ax = plt.subplots()
 
