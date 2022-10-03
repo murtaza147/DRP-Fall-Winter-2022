@@ -65,6 +65,8 @@ def convexHull(p):
 
 print("Convex Hull Plot: " + str(convexHull(coordinates)))
 
+# code for matplotlib
+
 xs = [p[0] for p in coordinates]
 ys = [p[1] for p in coordinates]
 
