@@ -15,8 +15,8 @@ def rightTurn(l):
 
     # -ve value meaning right turn
     print("Right Turn?")
-    print(((l[0][0] * l[1][1] * 1) + (l[0][1] * 1 * l[2][0]) + (1 * l[1][0] * l[2][1])) - ((l[2][0] * l[1][1] * 1) + (l[2][1] * 1 * l[0][0]) + (1 * l[1][0]) * l[0][1]) > 0)
-    return (((l[0][0] * l[1][1] * 1) + (l[0][1] * 1 * l[2][0]) + (1 * l[1][0] * l[2][1])) - ((l[2][0] * l[1][1] * 1) + (l[2][1] * 1 * l[0][0]) + (1 * l[1][0]) * l[0][1])) > 0
+    print(((l[0][0] * l[1][1] * 1) + (l[0][1] * 1 * l[2][0]) + (1 * l[1][0] * l[2][1])) - ((l[2][0] * l[1][1] * 1) + (l[2][1] * 1 * l[0][0]) + (1 * l[1][0]) * l[0][1]) < 0)
+    return (((l[0][0] * l[1][1] * 1) + (l[0][1] * 1 * l[2][0]) + (1 * l[1][0] * l[2][1])) - ((l[2][0] * l[1][1] * 1) + (l[2][1] * 1 * l[0][0]) + (1 * l[1][0]) * l[0][1])) < 0
 
 
 def convexHull(p):
@@ -29,7 +29,7 @@ def convexHull(p):
         upper.append(p[i])
         print("cor being appended: " + str(p[i]))
         print(upper)
-        while len(upper) > 2 and not rightTurn([upper[-1], upper[-2], upper[-3]]):
+        while len(upper) > 2 and not rightTurn([upper[-3], upper[-2], upper[-1]]):
             # print(rightTurn([upper[-1], upper[-2], upper[-3]]))
             print("removed: " + str(upper[-2]))
             upper.remove(upper[-2])
@@ -49,7 +49,7 @@ def convexHull(p):
         lower.append(p[i])
         print("cor being appended: " + str(p[i]))
         print(lower)
-        while len(lower) > 2 and not rightTurn([lower[-1], lower[-2], lower[-3]]):
+        while len(lower) > 2 and not rightTurn([lower[-3], lower[-2], lower[-1]]):
             print("removed: " + str(lower[-2]))
             lower.remove(lower[-2])
             print(lower)
